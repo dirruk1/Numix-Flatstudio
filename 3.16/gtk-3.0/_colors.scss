@@ -1,0 +1,46 @@
+// When color definition differs for dark and light variant,
+// it gets @if ed depending on $variant
+
+
+$base_color: if($variant =='light', #ffffff, #333333);
+$bg_color: if($variant =='light', #ebebeb, #5c5c5c);
+$fg_color: if($variant =='light', #484848, #dcdcdc);
+
+$dark_bg_color: if($variant =='light', #d0d0d0, #5c5c5c);
+$dark_fg_color: if($variant =='light', #484848, #dcdcdc);
+
+$scrollbar_color: if($variant =='light', #ededed, #393f3f);
+
+$selected_fg_color: #ffffff;
+$selected_bg_color: if($variant == 'light', #6d8cc7, darken(#6d8cc7,2%));
+$selected_borders_color: if($variant=='light', $selected_bg_color,
+                                               $selected_bg_color);
+$borders_color: if($variant =='light', $bg_color, darken($bg_color,12%));
+$borders_edge: if($variant =='light', white, transparentize($fg_color, 0.9));
+$link_color: darken($selected_bg_color,10%);
+$top_hilight: $borders_edge;
+
+$warning_color: #f57900;
+$error_color: #cc0000;
+$success_color: if($variant =='light', #73d216, darken(#73d216,10%));
+$destructive_color: if($variant =='light', #ef2929, darken(#ef2929,10%));
+
+$osd_fg_color: #eeeeec;
+$osd_bg_color: #2e3436;
+$osd_borders_color: transparentize(black, 0.3);
+$osd_outer_borders_color: transparentize(white, 0.9);
+
+$tooltip_borders_color: $osd_outer_borders_color;
+
+//insensitive state derived colors
+$insensitive_fg_color: mix($fg_color, $bg_color, 50%);
+$insensitive_bg_color: mix($bg_color, $base_color, 60%);
+$insensitive_borders_color: $borders_color;
+
+//colors for the backdrop state, derived from the main colors.
+$backdrop_base_color: if($variant =='light', darken($base_color,1%), lighten($base_color,1%));
+$backdrop_bg_color: $bg_color;
+$backdrop_fg_color: mix($fg_color, $backdrop_bg_color, 80%);
+$backdrop_insensitive_color: if($variant =='light', darken($backdrop_bg_color,15%), lighten($backdrop_bg_color,15%));
+$backdrop_borders_color: mix($borders_color, $bg_color, 90%);
+$backdrop_dark_fill: mix($backdrop_borders_color,$backdrop_bg_color, 35%);

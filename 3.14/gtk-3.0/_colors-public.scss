@@ -1,0 +1,49 @@
+//apps rely on some named colors to be exported
+/* GTK NAMED COLORS */
+
+// Sass thinks we're using the colors in the variables as strings and may shoot
+// warning, it's innocuous and can be defeated by using "" + $var
+@define-color theme_fg_color #{$fg_color};
+@define-color theme_bg_color #{$bg_color};
+@define-color theme_base_color #{"" + $base_color};
+@define-color theme_selected_bg_color #{$selected_bg_color};
+@define-color theme_selected_fg_color #{"" + $selected_fg_color};
+@define-color insensitive_bg_color #{$insensitive_bg_color};
+@define-color insensitive_fg_color #{$insensitive_fg_color};
+@define-color insensitive_base_color #{"" + $base_color};
+@define-color theme_unfocused_fg_color #{$backdrop_fg_color};
+@define-color theme_unfocused_bg_color #{$backdrop_bg_color};
+@define-color theme_unfocused_base_color #{$backdrop_base_color};
+@define-color theme_unfocused_selected_bg_color #{$selected_bg_color};
+@define-color theme_unfocused_selected_fg_color #{"" + $selected_fg_color};
+@define-color borders #{$borders_color};
+@define-color unfocused_borders #{$backdrop_borders_color};
+@define-color theme_dark_bg_color #{$dark_bg_color};
+@define-color theme_dark_fg_color #{$dark_fg_color};
+@define-color theme_scrollbar_color #{$scrollbar_color};
+
+@define-color warning_color #{$warning_color};
+@define-color error_color #{$error_color};
+@define-color success_color #{$success_color};
+//@define-color desctructive_color #{$destructive_color}
+
+//WM
+
+$_wm_highlight: if($variant=='light', $top_hilight,  // Sass gets mad if this is
+                  transparentize(black,1));          // done directly in the
+                                                     // color definition
+
+@define-color wm_bg #{$dark_bg_color};
+@define-color wm_title_focused mix(#{"" + $dark_fg_color}, #{"" + $dark_bg_color}, 0.1);
+@define-color wm_title_unfocused mix(#{"" + $dark_fg_color}, #{"" + $dark_bg_color}, 0.4); 
+@define-color wm_icons_focused mix(#{"" + $dark_fg_color}, #{"" + $dark_bg_color}, 0.1);
+@define-color wm_icons_focused_prelight #{$selected_bg_color};
+@define-color wm_icons_focused_pressed #{shade($selected_bg_color, 0.8)};
+@define-color wm_icons_unfocused mix(#{"" + $dark_fg_color}, #{"" + $dark_bg_color}, 0.1);
+@define-color wm_icons_unfocused_prelight #{$selected_bg_color};
+@define-color wm_icons_unfocused_pressed #{shade($selected_bg_color, 0.8)};
+
+//FIXME this is really an API
+
+@define-color content_view_bg #{"" + $base_color};
+
